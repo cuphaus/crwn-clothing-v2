@@ -1,0 +1,40 @@
+.checkout-page {
+    .checkout-list {
+        max-width: 1000px;
+        margin: 0 auto;
+
+        .row-item {
+            display: grid;
+            padding: 10px 0 20px 0;
+            border: 1px solid lightgray;
+            border-left: 0;
+            border-right: 0;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+            font-weight: 800;
+            font-size: 23px;
+            align-items: center;
+            column-gap: 10px;
+
+            &.header {
+                border-top: 0;
+            }
+
+            .decrement, .increment {
+                font-size: 35px;
+                padding: 10px;
+                cursor: pointer;
+            }
+
+            :nth-child(1) {
+                width: 200px;
+            }
+        }
+    }
+
+    .total {
+        text-align: right;
+        font-size: 30px;
+        font-weight: 800;
+        padding-top: 30px;
+    }
+}
