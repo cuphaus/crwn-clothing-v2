@@ -12,7 +12,7 @@ const removeCartItem = (cartItems, productToRemove, deleteFlag) => {
             });
         } else {
             // delete item
-            return cartItems.filter(x => x.id !== productToRemove.id).map(x => x);
+            return cartItems.filter(x => x.id !== productToRemove.id);
         }
     }
 }
@@ -60,12 +60,14 @@ export const CartProvider = ({ children }) => {
     useEffect(() => {
         const newCartCount = cartItems.reduce((total, cartItem) => total + cartItem.quantity, 0);
         setCartCount(newCartCount);
+    }, [cartItems]);
 
+    useEffect(() => {
         const newCartTotal = cartItems.reduce((total, cartItem) => total + cartItem.quantity * cartItem.price, 0);
         setCartTotal(newCartTotal);
     }, [cartItems]);
 
-    const value = { isCartOpen, setIsCartOpen, addItemToCart, removeItemFromCart, cartItems, cartCount, cartTotal};
+    const value = { isCartOpen, setIsCartOpen, addItemToCart, removeItemFromCart, cartItems, cartCount, cartTotal };
 
     return <CartContext.Provider value={value}>{children}</CartContext.Provider>
 };

@@ -1,4 +1,6 @@
 .checkout-page {
+    margin-bottom: 50px;
+
     .checkout-list {
         max-width: 1000px;
         margin: 0 auto;
@@ -6,27 +8,47 @@
         .row-item {
             display: grid;
             padding: 10px 0 20px 0;
-            border: 1px solid lightgray;
-            border-left: 0;
-            border-right: 0;
+            border-bottom: 2px solid lightgray;
             grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
             font-weight: 800;
-            font-size: 23px;
+            font-size: 20px;
             align-items: center;
-            column-gap: 10px;
+            column-gap: 30px;
 
             &.header {
                 border-top: 0;
+
+                /* 'remove', 'description', and 'quantity' headers*/
+                :nth-child(3),
+                :nth-child(4),
+                :nth-child(5) {
+                    text-align: center;
+                }
             }
 
-            .decrement, .increment {
-                font-size: 35px;
-                padding: 10px;
-                cursor: pointer;
+            .quantity {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                .count {
+                    padding-top: 10px;
+                }
+
+                .decrement, .increment {
+                    font-size: 50px;
+                    padding: 10px;
+                    cursor: pointer;
+                }
             }
 
-            :nth-child(1) {
+            >:nth-child(1) {
                 width: 200px;
+            }
+
+            .remove, .price, .quantity {
+                text-align: center;
+                cursor: pointer;
             }
         }
     }
