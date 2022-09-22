@@ -1,4 +1,4 @@
-import './checkout.styles.scss';
+import { CheckoutList, Total, Header } from './checkout.styles.jsx';
 import { useContext } from 'react';
 import { CartContext } from '../../../contexts/cart.context';
 import { useEffect } from 'react';
@@ -15,24 +15,22 @@ const Checkout = () => {
         setIsCartOpen(false);
     }, [])
 
-    
-
     return (
-        <div className='checkout-page'>
-            <div className='checkout-list'>
-                <div className='header row-item'>
+        <>
+            <CheckoutList>
+                <Header>
                     {['Product', 'Description', 'Quantity', 'Price', 'Remove'].map( (x, idx) => (
                         <div key={idx} className='heading-label'>{x}</div>
                     ))}
-                </div>
+                </Header>
                 {cartItems.map( item => (
                     <CheckoutItem item={item} key={item.id} />
                 ))}
-            </div>
-            <div className='total'>
+            </CheckoutList>
+            <Total>
                 TOTAL: ${cartTotal}
-            </div>
-        </div>
+            </Total>
+        </>
     );
 };
 

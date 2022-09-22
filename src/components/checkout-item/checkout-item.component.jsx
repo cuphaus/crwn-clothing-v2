@@ -1,6 +1,7 @@
-import './checkout-item.styles.scss';
+import { RowItem, Quantity } from './checkout-item.styles.jsx';
 import { useContext } from 'react';
 import { CartContext } from '../../contexts/cart.context';
+import { css } from 'styled-components';
 
 const CheckoutItem = ({item}) => {
     const { 
@@ -31,17 +32,17 @@ const CheckoutItem = ({item}) => {
     };
 
     return (
-        <div key={item.id} className='row-item'>
+        <RowItem key={item.id}>
             <img src={item.imageUrl} alt={item.name} />
             <span>{item.name}</span>
-            <div className='quantity'>
+            <Quantity>
                 <span className='decrement' id={item.id} onClick={decrementCartItem}>&#8249;</span>
                 <span className='count'>{item.quantity}</span>
                 <span className='increment' id={item.id} onClick={incrementCartItem}>&#8250;</span>
-            </div>
+            </Quantity>
             <div className='price'>{item.price}</div>
             <div className='remove' id={item.id} onClick={removeCartItem}>&#10005;</div>
-        </div>
+        </RowItem>
     );
 };
 
